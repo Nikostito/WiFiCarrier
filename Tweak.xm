@@ -10,6 +10,9 @@ static id subscriptionContext = nil;
 static BOOL enabled;
 static NSString *customCarrier;
 
+%hook SBTelephonyManager
+
+%end
 %hook STTelephonyStateProvider
 -(void)operatorNameChanged:(id)arg1 name:(id)arg2 {
 	subscriptionContext = arg1;
@@ -45,7 +48,7 @@ static NSString *customCarrier;
 %end
 
 %hook SpringBoard
-%hook SBTelephonyManager
+
 - (void)applicationDidFinishLaunching:(id)application {
 	%orig;
 
@@ -56,7 +59,7 @@ static NSString *customCarrier;
 }
 
 %end
-%end
+
 static void forceUpdate() {
 	if (!hasFullyLoaded || subscriptionContext == nil) return;
 
