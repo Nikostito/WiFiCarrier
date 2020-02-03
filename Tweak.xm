@@ -60,7 +60,7 @@ static NSString *customCarrier;
 static void forceUpdate() {
 	if (!hasFullyLoaded || subscriptionContext == nil) return;
 
-	SBTelephonyManager *manager = [%c(SBTelephonyManager) sharedTelephonyManager];
+	SSVTelephonyController *manager = [%c(SSVTelephonyController) sharedController];
 	[manager operatorNameChanged:subscriptionContext name:originalName];
 }
 
