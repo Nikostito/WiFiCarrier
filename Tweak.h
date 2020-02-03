@@ -7,7 +7,7 @@
 +(id)sharedTelephonyManager;
 @end
 
-@interfase STTelephonyStateProvider : NSObject
+@interface STTelephonyStateProvider : NSObject
 -(void)operatorNameChanged:(id)arg1 name:(id)arg2;
 @end
 
