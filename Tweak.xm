@@ -11,7 +11,7 @@ static BOOL enabled;
 static NSString *customCarrier;
 
 
-%hook STTelephonyStateProvider
+%hook SSVTelephonyController
 -(void)operatorNameChanged:(id)arg1 name:(id)arg2 {
 	subscriptionContext = arg1;
 	originalName = arg2;
