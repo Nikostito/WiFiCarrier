@@ -10,9 +10,7 @@ static id subscriptionContext = nil;
 static BOOL enabled;
 static NSString *customCarrier;
 
-%hook SBTelephonyManager
 
-%end
 %hook STTelephonyStateProvider
 -(void)operatorNameChanged:(id)arg1 name:(id)arg2 {
 	subscriptionContext = arg1;
