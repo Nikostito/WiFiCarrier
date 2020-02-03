@@ -10,6 +10,15 @@ static id subscriptionContext = nil;
 static BOOL enabled;
 static NSString *customCarrier;
 
+%hook SBWiFiManager
+-(void)_updateCurrentNetwork {
+	%orig;
+
+	if (enabled) {
+		forceUpdate();
+	}
+}
+%end
 
 %hook SSVTelephonyController
 -(void)operatorNameChanged:(id)arg1 name:(id)arg2 {
@@ -32,16 +41,6 @@ static NSString *customCarrier;
 		%orig;
 	}
 
-}
-%end
-
-%hook SBWiFiManager
--(void)_updateCurrentNetwork {
-	%orig;
-
-	if (enabled) {
-		forceUpdate();
-	}
 }
 %end
 
